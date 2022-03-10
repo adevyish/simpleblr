@@ -82,7 +82,7 @@ Simpleblr.layoutPhotosets = function() {
 /* Run everything */
 Simpleblr.run = function () {
     Simpleblr.loadHighResNPFPhotos()
-    Simpleblr.fixNPFLeadingBreaks()
-    Simpleblr.fixNPFEmptyParagraphs()
+    Simpleblr.removeReblogLeadingBreaks()
+    Simpleblr.removeReblogEmptyParagraphs()
     Simpleblr.layoutPhotosets()
 }

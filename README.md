@@ -71,3 +71,5 @@ For example:
   </div>
 {/block:Photoset}
 ```
+
+To change the spacing between photos, set `Simpleblr.PHOTOSET_SPACING` before running Simpleblr.

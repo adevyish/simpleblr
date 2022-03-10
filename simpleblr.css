@@ -1,0 +1,22 @@
+/* Support photoset layouts */
+
+[data-photoset-row] {
+	padding-bottom: 4px;
+	overflow-y: hidden;
+}
+[data-photoset-row]:last-child { padding-bottom: 0; }
+[data-photoset-item] {
+	display: inline-block;
+	vertical-align: top;
+	padding-right: 4px;
+}
+[data-photoset-item]:last-child { padding-right: 0; }
+
+/* Make NPF rows with multiple images aligned with rest of post */
+
+.post-content div.npf_row,
+.post div.npf_row,
+body div.npf_row {
+	margin-left: 0;
+	margin-right: 0;
+}

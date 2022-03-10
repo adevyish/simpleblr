@@ -23,6 +23,8 @@ Add before the `</body>` tag:
 
 You can also only run individual functions if you want to.
 
+*Note: You will have to host your own copy. Github doesn't let you embed files directly from repositories.*
+
 ## NPF Posts
 
 NPF reblogs are supported with `data-reblog-item-body`.

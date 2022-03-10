@@ -6,7 +6,7 @@ Endless scrolling and layout resizing are not supported out of the box, but both
 
 ## Setup
 
-Add after the `<style>` tag:
+Add after the `</style>` tag:
   
 ```
 <link rel="stylesheet" href="/path/to/simpleblr.css" />

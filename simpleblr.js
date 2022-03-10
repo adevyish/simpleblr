@@ -39,7 +39,19 @@ Simpleblr.layoutPhotosets = function() {
 
         photoset.dataset.photosetLayout.split('').forEach(function (rowLayout) {
             var row = document.createElement('div')
+            row.dataset.photosetRow = rowLayout
+
             var columnCount = parseInt(rowLayout)
+            if (columnCount === 1) {
+                var item = items[itemIndex]
+                item.dataset.photosetItem = true
+
+                row.appendChild(item)
+                photoset.appendChild(row)
+                itemIndex += columnCount
+                continue
+            }
+
             var itemWidth = (photosetWidth - Simpleblr.PHOTOSET_SPACING * (columnCount - 1)) / columnCount
 
             // Calculate row height
@@ -68,7 +80,6 @@ Simpleblr.layoutPhotosets = function() {
                 }
             }
 
-            row.dataset.photosetRow = rowLayout
             row.style += "; height: " + rowHeight + "px"
             photoset.appendChild(row)
         

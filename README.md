@@ -2,7 +2,7 @@
 
 This is a lightweight set of Javascript utilities for Tumblr themes. It does not rely on any external libraries like jQuery.
 
-Endless scrolling is not supported out of the box, but should be easy to hook up.
+Endless scrolling and layout resizing are not supported out of the box, but should be easy to hook up.
 
 ## Setup
 
@@ -21,7 +21,7 @@ Add before the `</body>` tag:
 </script>
 ```
 
-You can also only run individual functions if you want to.
+If you want to, you can only run individual functions instead of all of Simpleblr.
 
 *Note: You will have to host your own copy. Github doesn't let you embed files directly from repositories.*
 

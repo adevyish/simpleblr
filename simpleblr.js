@@ -31,62 +31,60 @@ Simpleblr.removeReblogEmptyParagraphs = function () {
 
 /* Layout photosets */
 Simpleblr.layoutPhotosets = function() {
-    var query = '[data-photoset-layout]:not([data-photoset-created])'
-    document.querySelectorAll(query).forEach(function (photoset) {
+    document.querySelectorAll('[data-photoset-layout]').forEach(function (photoset) {
         var items = photoset.querySelectorAll('[data-photoset-item]')
         var itemIndex = 0
         var photosetWidth = photoset.clientWidth // no padding on this pls :(
+        if (photoset.dataset.photosetWidth !== photosetWidth) {
+            photoset.dataset.photosetLayout.split('').forEach(function (rowLayout) {
+                var row = document.createElement('div')
+                row.dataset.photosetRow = rowLayout
 
-        photoset.dataset.photosetLayout.split('').forEach(function (rowLayout) {
-            var row = document.createElement('div')
-            row.dataset.photosetRow = rowLayout
+                var columnCount = parseInt(rowLayout)
+                if (columnCount === 1) {
+                    var item = items[itemIndex]
+                    item.dataset.photosetItem = true
+                    row.appendChild(item)
+                } else {
+                    var spacingInRow = Simpleblr.PHOTOSET_SPACING * (columnCount - 1)
+                    var itemWidth = window.Math.floor((photosetWidth - spacingInRow) / columnCount)
 
-            var columnCount = parseInt(rowLayout)
-            if (columnCount === 1) {
-                var item = items[itemIndex]
-                item.dataset.photosetItem = true
+                    // Calculate row height
+                    var rowHeight = Simpleblr.MAX_ROW_HEIGHT
+                    for (var columnIndex = 0; columnIndex < columnCount; columnIndex++) {
+                        var item = items[itemIndex + columnIndex]
+                        var image = item.querySelector('img')
+                        var resizedHeight = image.height / image.width * itemWidth
+                        if (resizedHeight < rowHeight) {
+                            rowHeight = resizedHeight
+                        }
+                    }
 
-                row.appendChild(item)
+                    // Set item position + dimensions
+                    for (var columnIndex = 0; columnIndex < columnCount; columnIndex++) {
+                        var item = items[itemIndex + columnIndex]
+                        item.dataset.photosetItem = true
+                        row.appendChild(item)
+
+                        var image = item.querySelector('img')
+                        var resizedHeight = image.height / image.width * itemWidth
+                        var halfExtraHeight = (resizedHeight - rowHeight) / 2
+                        image.width = itemWidth
+                        if (halfExtraHeight > 0) {
+                            image.style += "; margin-top: -" + halfExtraHeight + "px"
+                        }
+                    }
+
+                    row.style += "; height: " + rowHeight + "px"
+                }
+
                 photoset.appendChild(row)
                 itemIndex += columnCount
-                continue
-            }
-
-            var itemWidth = (photosetWidth - Simpleblr.PHOTOSET_SPACING * (columnCount - 1)) / columnCount
-
-            // Calculate row height
-            var rowHeight = Simpleblr.MAX_ROW_HEIGHT
-            for (var columnIndex = 0; columnIndex < columnCount; columnIndex++) {
-                var item = items[itemIndex + columnIndex]
-                var image = item.querySelector('img')
-                var resizedHeight = image.height / image.width * itemWidth
-                if (resizedHeight < rowHeight) {
-                    rowHeight = resizedHeight
-                }
-            }
-
-            // Set item position + dimensions
-            for (var columnIndex = 0; columnIndex < columnCount; columnIndex++) {
-                var item = items[itemIndex + columnIndex]
-                item.dataset.photosetItem = true
-                row.appendChild(item)
-
-                var image = item.querySelector('img')
-                var resizedHeight = image.height / image.width * itemWidth
-                var halfExtraHeight = (resizedHeight - rowHeight) / 2
-                image.width = itemWidth
-                if (halfExtraHeight > 0) {
-                    image.style += "; margin-top: -" + halfExtraHeight + "px"
-                }
-            }
-
-            row.style += "; height: " + rowHeight + "px"
-            photoset.appendChild(row)
-        
-            itemIndex += columnCount
-        })
+            })
+        }
 
         photoset.dataset.photosetCreated = true
+        photoset.dataset.photosetWidth = photosetWidth
     })
 }
 

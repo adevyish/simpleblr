@@ -2,7 +2,7 @@
 
 This is a lightweight set of Javascript utilities for Tumblr themes. It does not rely on any external libraries like jQuery.
 
-Endless scrolling and layout resizing are not supported out of the box, but both should be easy to hook up.
+Endless scrolling is not supported out of the box, but should be easy to hook up.
 
 ## Setup
 

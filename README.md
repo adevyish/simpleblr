@@ -27,7 +27,7 @@ If you want to, you can only run individual functions instead of all of Simplebl
 
 ## NPF Posts
 
-Photosets made with NPF are normalized to have the same margin (multi-photo rows) and appear higher res (single photo rows).
+Photosets made with NPF are normalized to have the same margin (multi-photo rows) and apparent resolution (single photo rows).
 
 ## Reblogs
 

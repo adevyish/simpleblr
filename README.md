@@ -27,7 +27,11 @@ You can also only run individual functions if you want to.
 
 ## NPF Posts
 
-NPF reblogs are supported with `data-reblog-item-body`.
+Photosets made with NPF are normalized to have the same margin (multi-photo rows) and appear higher res (single photo rows).
+
+## Reblogs
+
+Reblogs are supported with `data-reblog-item-body`. Simpleblr cleans up reblogs by removing empty paragraphs and leading line breaks.
 
 For example:
 

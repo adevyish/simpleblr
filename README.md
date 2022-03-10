@@ -7,7 +7,7 @@ Endless scrolling and layout resizing are not supported out of the box, but both
 ## Setup
 
 Add after the `<style>` tag:
-	
+  
 ```
 <link rel="stylesheet" href="/path/to/simpleblr.css" />
 ```
@@ -17,7 +17,7 @@ Add before the `</body>` tag:
 ```
 <script src="/path/to/simpleblr.js"></script>
 <script>
-	Simpleblr.run()
+  Simpleblr.run()
 </script>
 ```
 
@@ -31,16 +31,16 @@ For example:
 
 ```
 {block:RebloggedFrom}
-	<div>
-		{block:Reblogs}
-			<section>
-				<div>{Username}</div>
-				<div data-reblog-item-body>
-					{Body}
-				</div>
-			</section>
-		{/block:Reblogs}
-	</div>
+  <div>
+    {block:Reblogs}
+      <section>
+        <div>{Username}</div>
+        <div data-reblog-item-body>
+          {Body}
+        </div>
+      </section>
+    {/block:Reblogs}
+  </div>
 {/block:RebloggedFrom}
 ```
 
@@ -52,16 +52,16 @@ For example:
 
 ```
 {block:Photoset}
-	<div data-photoset-layout="{PhotosetLayout}">
-		{block:Photos}
-			<span data-photoset-item>
-				{block:LinkURL}<a href="{LinkURL}">{/block:LinkURL}
-				{block:HighRes}<a href="{PhotoURL-HighRes}">{/block:HighRes}
-					<img src="{PhotoURL-1280}" alt="{PhotoAlt}">
-				{block:HighRes}</a>{/block:HighRes}
-				{block:LinkURL}</a>{/block:LinkURL}
-			</span>
-		{/block:Photos}
-	</div>
+  <div data-photoset-layout="{PhotosetLayout}">
+    {block:Photos}
+      <span data-photoset-item>
+        {block:LinkURL}<a href="{LinkURL}">{/block:LinkURL}
+        {block:HighRes}<a href="{PhotoURL-HighRes}">{/block:HighRes}
+          <img src="{PhotoURL-1280}" alt="{PhotoAlt}">
+        {block:HighRes}</a>{/block:HighRes}
+        {block:LinkURL}</a>{/block:LinkURL}
+      </span>
+    {/block:Photos}
+  </div>
 {/block:Photoset}
 ```

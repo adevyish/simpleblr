@@ -13,17 +13,15 @@ Simpleblr.loadHighResNPFPhotos = function () {
     })
 }
 
-/* Remove <br>s at the start of paragraphs in reblogged posts */
-Simpleblr.removeReblogLeadingBreaks = function () {
+/* Remove extra whitespace from reblogged posts */
+Simpleblr.removeReblogExtraWhitespace = function () {
+    // Remove <br>s at the start of paragraphs
     document.querySelectorAll('[data-reblog-item-body] p > br').forEach(function (br) {
         if (br.parentElement.firstChild === br) {
             br.remove()
         }
     })
-}
-
-/* Remove empty <p>s from reblogged posts. Must be run after removeReblogLeadingBreaks. */
-Simpleblr.removeReblogEmptyParagraphs = function () {
+    // Remove empty <p>s (will remove both originally empty <p>s and newly emptied <p>s)
     document.querySelectorAll('[data-reblog-item-body] p:empty').forEach(function (p) {
         p.remove()
     })
@@ -80,7 +78,6 @@ Simpleblr.layoutPhotosets = function() {
 /* Run everything */
 Simpleblr.run = function () {
     Simpleblr.loadHighResNPFPhotos()
-    Simpleblr.removeReblogLeadingBreaks()
-    Simpleblr.removeReblogEmptyParagraphs()
+    Simpleblr.removeReblogExtraWhitespace()
     Simpleblr.layoutPhotosets()
 }

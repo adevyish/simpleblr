@@ -33,9 +33,9 @@ Photosets made with NPF are normalized to have the same margin (multi-photo rows
 
 Reblogs are supported with `data-reblog-item-body`. Simpleblr cleans up reblogs by removing empty paragraphs and leading line breaks.
 
-For example:
+### Example
 
-```
+```html
 {block:RebloggedFrom}
   <div>
     {block:Reblogs}
@@ -54,9 +54,9 @@ For example:
 
 Custom photosets are supported with `data-photoset-layout`, `data-photoset-item`, `data-width`, and `data-height`.
 
-For example:
+### Example
 
-```
+```html
 {block:Photoset}
   <div data-photoset-layout="{PhotosetLayout}">
     {block:Photos}
@@ -71,6 +71,8 @@ For example:
   </div>
 {/block:Photoset}
 ```
+
+### Customization
 
 To change the spacing between photos:
 

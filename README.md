@@ -8,13 +8,13 @@ Endless scrolling and layout resizing are not supported out of the box, but shou
 
 Add after the `</style>` tag:
   
-```
+```html
 <link rel="stylesheet" href="/path/to/simpleblr.css" />
 ```
 
 Add before the `</body>` tag:
 
-```
+```html
 <script src="/path/to/simpleblr.js"></script>
 <script>
 window.addEventListener('DOMContentLoaded', (event) => Simpleblr.run())

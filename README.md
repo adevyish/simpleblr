@@ -17,7 +17,9 @@ Add before the `</body>` tag:
 ```html
 <script src="/path/to/simpleblr.js"></script>
 <script>
-window.addEventListener('DOMContentLoaded', (event) => Simpleblr.run())
+  window.addEventListener('DOMContentLoaded', (event) => {
+    Simpleblr.run()
+  })
 </script>
 ```
 

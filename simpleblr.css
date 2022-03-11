@@ -1,16 +1,24 @@
 /* Support photoset layouts */
 
 [data-photoset-row] {
-	padding-bottom: 4px;
-	overflow-y: hidden;
+    display: flex;
 }
-[data-photoset-row]:last-child { padding-bottom: 0; }
+[data-photoset-row] + [data-photoset-row] {
+    padding-top: 4px;
+}
+
 [data-photoset-item] {
-	display: inline-block;
-	vertical-align: top;
-	padding-right: 4px;
+    width: 100%;
 }
-[data-photoset-item]:last-child { padding-right: 0; }
+[data-photoset-item] + [data-photoset-item] {
+    padding-left: 4px;
+}
+
+[data-photoset-item] img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 /* Make NPF rows with multiple images aligned with rest of post */
 

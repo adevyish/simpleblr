@@ -36,50 +36,39 @@ Simpleblr.layoutPhotosets = function() {
         var itemIndex = 0
         var photosetWidth = photoset.clientWidth // no padding on this pls :(
         if (photoset.dataset.photosetWidth !== photosetWidth) {
+            photoset.querySelectorAll('[data-photoset-row]').forEach(function (row) {
+                row.remove()
+            })
+
             photoset.dataset.photosetLayout.split('').forEach(function (rowLayout) {
                 var row = document.createElement('div')
                 row.dataset.photosetRow = rowLayout
 
                 var columnCount = parseInt(rowLayout)
                 if (columnCount === 1) {
-                    var item = items[itemIndex]
+                    var item = items[itemIndex++]
                     item.dataset.photosetItem = true
                     row.appendChild(item)
                 } else {
                     var spacingInRow = Simpleblr.PHOTOSET_SPACING * (columnCount - 1)
                     var itemWidth = window.Math.floor((photosetWidth - spacingInRow) / columnCount)
 
-                    // Calculate row height
                     var rowHeight = Simpleblr.MAX_ROW_HEIGHT
                     for (var columnIndex = 0; columnIndex < columnCount; columnIndex++) {
-                        var item = items[itemIndex + columnIndex]
-                        var image = item.querySelector('img')
-                        var resizedHeight = image.height / image.width * itemWidth
-                        if (resizedHeight < rowHeight) {
-                            rowHeight = resizedHeight
-                        }
-                    }
-
-                    // Set item position + dimensions
-                    for (var columnIndex = 0; columnIndex < columnCount; columnIndex++) {
-                        var item = items[itemIndex + columnIndex]
+                        var item = items[itemIndex++]
                         item.dataset.photosetItem = true
                         row.appendChild(item)
 
                         var image = item.querySelector('img')
-                        var resizedHeight = image.height / image.width * itemWidth
-                        var halfExtraHeight = (resizedHeight - rowHeight) / 2
-                        image.width = itemWidth
-                        if (halfExtraHeight > 0) {
-                            image.style += "; margin-top: -" + halfExtraHeight + "px"
+                        var resizedHeight = image.naturalHeight / image.naturalWidth * itemWidth
+                        if (resizedHeight < rowHeight) {
+                            rowHeight = resizedHeight
                         }
                     }
-
-                    row.style += "; height: " + rowHeight + "px"
                 }
 
+                row.style = "height: " + rowHeight + "px"
                 photoset.appendChild(row)
-                itemIndex += columnCount
             })
         }
 

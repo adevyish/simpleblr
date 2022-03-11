@@ -1,4 +1,4 @@
-# simpleblr
+# Simpleblr
 
 This is a lightweight set of Javascript utilities for Tumblr themes. It does not rely on any external libraries like jQuery.
 
@@ -64,9 +64,10 @@ Custom photosets are supported with `data-photoset-layout`, `data-photoset-item`
     {block:Photos}
       <span data-photoset-item>
         {block:LinkURL}<a href="{LinkURL}">{/block:LinkURL}
-        {block:HighRes}<a href="{PhotoURL-HighRes}">{/block:HighRes}
-          <img src="{PhotoURL-1280}" alt="{PhotoAlt}" data-width="{PhotoWidth-1280}" data-height="{PhotoHeight-1280}">
-        {block:HighRes}</a>{/block:HighRes}
+          {block:HighRes}<a href="{PhotoURL-HighRes}">{/block:HighRes}
+            <img src="{PhotoURL-1280}" alt="{PhotoAlt}"
+                 data-width="{PhotoWidth-1280}" data-height="{PhotoHeight-1280}">
+          {block:HighRes}</a>{/block:HighRes}
         {block:LinkURL}</a>{/block:LinkURL}
       </span>
     {/block:Photos}

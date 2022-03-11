@@ -60,7 +60,7 @@ Simpleblr.layoutPhotosets = function() {
                         row.appendChild(item)
 
                         var image = item.querySelector('img')
-                        var resizedHeight = image.naturalHeight / image.naturalWidth * itemWidth
+                        var resizedHeight = image.dataset.height / image.dataset.width * itemWidth
                         if (resizedHeight < rowHeight) {
                             rowHeight = resizedHeight
                         }

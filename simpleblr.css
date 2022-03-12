@@ -1,13 +1,17 @@
 /* Support photoset layouts */
 
-[data-photoset-layout]:not([data-photoset-created]) [data-photoset-item] + [data-photoset-item] {
+[data-photoset-item] {
+    display: inline-block;
+}
+
+[data-photoset-row] {
+    display: flex;
+}
+[data-photoset-row] + [data-photoset-row] {
     padding-top: 4px;
 }
 
-[data-photoset-created] [data-photoset-row] {
-    display: flex;
-}
-[data-photoset-created] [data-photoset-row] + [data-photoset-row] {
+[data-photoset-layout]:not([data-photoset-created]) [data-photoset-item] + [data-photoset-item] {
     padding-top: 4px;
 }
 

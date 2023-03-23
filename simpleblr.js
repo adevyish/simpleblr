@@ -17,7 +17,7 @@ Simpleblr.loadHighResNPFPhotos = function () {
 Simpleblr.removeReblogExtraWhitespace = function () {
     // Remove <p>s with no text
     document.querySelectorAll('[data-reblog-item-body] p').forEach(function (p) {
-        if (p.childElementCount === 0 && p.textContent.trim().length === 0) {
+        if (p.textContent.trim().length === 0) {
             p.remove()
         }
     })

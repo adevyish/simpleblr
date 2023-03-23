@@ -21,6 +21,12 @@ Simpleblr.removeReblogExtraWhitespace = function () {
             br.remove()
         }
     })
+    // Remove empty style elements
+    document.querySelectorAll(
+        '[data-reblog-item-body] b:empty, [data-reblog-item-body] i:empty'
+    ).forEach(function (element) {
+        element.remove()
+    })
     // Remove empty <p>s (will remove both originally empty <p>s and newly emptied <p>s)
     document.querySelectorAll('[data-reblog-item-body] p:empty').forEach(function (p) {
         p.remove()
